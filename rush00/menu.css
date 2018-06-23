@@ -1,0 +1,67 @@
+body{
+  text-align: center;
+  align-content: center;
+}
+ul li{
+  list-style: none;
+}
+.nav_menu{
+  margin: 0px;
+  padding: 0px;
+}
+header{
+  margin-top: 100px;
+  width: 80%;
+  font-family: sans-serif;
+  margin: auto;
+}
+.nav_menu ul{
+  display: flex;
+  justify-content: center;
+}
+.fav{
+  width: 16px;
+  margin-bottom: 0px;
+  vertical-align: bottom;
+}
+.nav_menu ul li a{
+  display: block;
+  background: white;
+  padding: 10px 30px 10px 40px;
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.nav_menu ul li:first-child{
+  border-left: 3px solid grey;
+}
+.nav_menu ul li:last-child{
+  border-right: 3px solid grey;
+}
+.nav_menu >ul li{
+  position: relative;
+  border-right: 1px solid grey;
+}
+.nav_menu li a:hover{
+  background: lightblue;
+  box-shadow: 3px 5px 10px 5px black;
+  transition: all 0.3s ease;
+}
+.nav_menu li ul{
+  position: absolute;
+  min-width: 150px;
+  display: none;
+}
+.nav_menu li ul li{
+  border: 3px solid grey;
+}
+.nav_menu li ul li ul{
+  position: absolute;
+  right: -150px;
+  top: -3px;
+}
+.nav_menu li:hover > ul{
+  display: block;
+}

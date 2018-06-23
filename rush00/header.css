@@ -1,0 +1,182 @@
+<style>
+*{
+  vertical-align: baseline;
+  font-weight: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  border: 0 none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  text-decoration: none;
+}
+body{
+  height: 100%;
+  text-align: center;
+}
+.container_page{
+  min-width: 950px;
+  max-width: 1150px;
+  display: block;
+  margin: auto;
+}
+  .site_title{
+    vertical-align: top;
+    margin-top: 0px;
+    text-align: center;
+    font-family: Tahoma, Verdana, sans-serif;
+    font-size: 150%;
+  }
+  .logo_block{
+    width: 25%;
+    vertical-align: bottom;
+  }
+  .basket_block{
+    vertical-align: bottom;
+    width: 25%;
+  }
+  .title{
+    vertical-align: top;
+    color: blue;
+  }
+  .basket{
+    vertical-align: bottom;
+  }
+  #basket_img{
+    width: 100px;
+    height: 100px;
+  }
+  table,tr{
+    width: 100%;
+  }
+  #phone_number{
+    vertical-align: bottom;
+    font-size: 200%;
+    text-align: left;
+    font-weight: bold;
+
+  }
+  .call_block{
+    padding-left: 50px;
+  }
+  #call_ph{
+    float: left;
+    text-align: bottom;
+    vertical-align: bottom;
+  }
+.nav_menu{
+  background-color: lightblue;
+}
+#nav{
+  float: left;
+  width: 100%;
+  list-style: none;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+#nav li{
+  float: left;
+  /* margin-right: 12px; */
+  display: block;
+  position: relative;
+}
+#nav li a{
+  padding: 12px;
+  display: block;
+  color: black;
+}
+#nav li a:hover{
+  color: blue;
+  text-decoration: underline;
+  font-size: 110%;
+}
+#nav ul{
+  list-style: none;
+  position: absolute;
+  left: -10000px;
+  opacity: 0;
+  -webkit-transition:0.20s linear opacity;
+}
+#nav li:hover ul{
+    left:0;
+    opacity:1;
+    background-color: lightblue;
+}
+
+.main_part{
+  height: 100%;
+}
+h2{
+  font-size: 120%;
+}
+#a1{
+  vertical-align: top;
+  width: 60%;
+}
+.form_auth{
+  margin-top: 10%;
+  margin-right: 15px;
+  text-align: right;
+}
+.form_registr{
+  margin-top: 10%;
+  margin-left: 15px;
+}
+#new{
+  color: red;
+}
+#old{
+  color: blue;
+}
+.reg_f p{
+  margin: 5px;
+  margin-left: 20px;
+}
+.reg_f td{
+  width: 40%;
+}
+.registration{
+
+ border: 3px solid blue; /* Белая рамка */
+ border-radius: 10px; /* Радиус скругления */
+}
+form h2{
+  margin-left: 20%;
+}
+#rem{
+  margin-left: 15px;
+}
+#sub1{
+  margin-left: 5%;
+  width: 220px;
+  font-size: 130%;
+  background-color: lightblue;
+  border-radius: 10px;
+}
+#sub2{
+  width: 190px;
+  font-size: 130%;
+  background-color: lightblue;
+  border-radius: 10px;
+}
+.authorization p{
+  margin-right: 30px;
+}
+.authorization h2{
+  margin-right: 30px;
+}
+.footer{
+  background-color: lightblue;
+  height: 90px;
+  text-align: center;
+  width: 100%;
+  display: block;
+  padding: 10px;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+}
+
+</style>
