@@ -6,10 +6,6 @@ if (!isset($_SESSION['name']) || $_SESSION['name'] == "")
   echo "Необходимо зарегестрироваться!";
   exit();
 }
-if ($_SESSION['goods_count'] < 1){
-  echo "Вы еще не добавили товары в корзину!";
-  exit();
-}
 ?>
 <link rel="stylesheet" href="header.css">
 <?php
@@ -40,6 +36,9 @@ include 'header.php';
       margin: auto;
       display: inline;
     }
+    .disp{
+      display: none;
+    }
     .mega_cont:last-child{
       margin-bottom: 100px;
     }
@@ -47,16 +46,52 @@ include 'header.php';
       padding: 10px 24px;
       border: solid 2px blue;
     }
+    .buttom1{
+      width: 300px;
+      height: 40px;
+      background-color: lightblue;
+      color: blue;
+      font-size: 120%;
+      text-align: center;
+      margin: auto;
+    }
     </style>
 </head>
 <div class="mega_cont">
+<div class="buttom1">
+  <form class="buttom1" action="zakaz.php" method="post">
+    <input type="submit" class="buttom1" name="send" value="Отправить!">
+      <?php
+        $sid = session_id();
+        echo '<input type="hidden" name="'.$_SESSION['name'].'" value="'.$sid.'">';
+       ?>
+  </form>
+</div>
 <?php
 $sid = session_id();
 include 'db_connect.php';
-echo "$sid";
-echo '$sql = "SELECT * FROM basket WHERE sid = $sid"';
+
+$sql = "
+        SELECT * FROM basket WHERE sid LIKE '%{$sid}%'
+        ;";
 $result = mysqli_query($db, $sql);
-if ($result)
-echo "GOOD";
+$rows = mysqli_num_rows($result);
+
+for ($i = 0 ; $i < $rows ; ++$i)
+{
+  $row = mysqli_fetch_assoc($result);
+  echo '<div class="element">
+        <div class="img">
+        <img class="el" src="'.$row['img'].'">
+        </div><p>'.$row['monufact'].'
+        </br>'.$row['position'].'
+        </br>'.$row['amount'].'
+        </br><strong>'.$row['price'].'</strong>
+        </p><form class="" action="basket_del.php" method="post"><input type="submit"
+        onClick="parent.location.reload(); 2000"
+        value="Удалить" class="sale" name="'.$row[id].'"></form>
+        </div>' ;
+}
+mysqli_free_result($result);
 include 'footer.php';
 ?>

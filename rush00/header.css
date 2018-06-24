@@ -179,5 +179,22 @@ form h2{
   padding: 10px;
   margin: auto;
 }
+.category{
+style: flex;
+width: 170px;
+text-align: left;
+background-color: lightblue;
+height: 40px;
+font-size: 95%;
+border: none;
+white-space: normal;
+font-family: sans-serif;
+text-decoration: underline;
+margin-top: -20px;
+margin-bottom: 0px;
+}
+.ccc{
+  width: 100%;
+}
 
 </style>

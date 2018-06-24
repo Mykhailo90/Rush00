@@ -49,7 +49,7 @@
                 <td>
                   <strong>Добавлено:</strong><?=$_SESSION['goods_count']?> шт.<br/>
                   <strong>На сумму:</strong><?=$_SESSION['all_check']?> грн.<br/>
-                  <a href='basketS.php'>Оформить заказ</a>
+                  <a class="disp" href='basketS.php'>Оформить заказ</a>
                 </td>
               </tr>
             </table>
@@ -90,8 +90,8 @@
                   <ul>
                     <?php
                         foreach ($ar_catalog as $key => $value) {
-                          echo  '<li><a href="#">'.$value
-                          .'</a></li>';
+                          echo  '<li><a href="#"><form class="ccc" action="generator.php" method="post"><input type="submit" class="category" name="'.$key
+                          .'" value="'.$value.'" /></form>'.'</a></li>';
                         }
                     ?>
                   </ul>

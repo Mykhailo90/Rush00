@@ -2,7 +2,6 @@
   session_start();
  ?>
 <head>
-  
   <style media="screen">
     .element{
       border: solid 2px blue;

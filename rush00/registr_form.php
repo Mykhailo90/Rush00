@@ -65,7 +65,6 @@
     {
        exit ("Данное имя уже используется в системе.");
     }
-    // $sql = "INSERT INTO users (name, password) VALUES ('$login', '$password')";
     $sql = "INSERT INTO users (name, password, email, phone) VALUES ('$login','$password', '$email', '$phone_number')";
     $result2 = mysqli_query ($db, $sql);
 

@@ -1,5 +1,6 @@
 <?php
   session_start();
+  //Позиция, которую необходимо удалить и вернуть управление обратно на basket sale
   foreach ($_POST as $key => $value) {
     $id_good = $key;
   }
@@ -9,9 +10,10 @@
 
   include 'db_connect.php';
 
-  $sql = "SELECT price FROM goods WHERE id = $id_good";
+  $sql = "
+          SELECT * FROM basket WHERE id = $id_good
+          ;";
   $result = mysqli_query($db, $sql);
-
   $us_basket = array();
   if($result)
   {
@@ -25,7 +27,10 @@
       }
       $_SESSION['all_check'] -= $us_basket['price'];
 
-      $sql = 'DELETE * FROM basket WHERE id = "$id_good"';
+      $sql = "
+              DELETE FROM basket
+              WHERE id = $id_good
+              ;";
       $result = mysqli_query($db, $sql);
     }
     mysqli_close($db);

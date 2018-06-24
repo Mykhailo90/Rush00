@@ -73,7 +73,6 @@
     text-align: center;
     width: 100%;
     left: -40px;
-    /* min-width: 180px; */
     display: none;
   }
   .nav_menu li ul li{
@@ -109,10 +108,9 @@
               </li>
               <li><a href="#">Управление товарами</a>
                 <ul>
-                    <li><a href="#">Добавить товар</a></li>
-                    <li><a href="#">Удалить</a></li>
-                    <li><a href="#">Изменить категорию</a></li>
-                    <li><a href="#">Редактировать</a></li>
+                    <li><a href="add_product.php">Добавить товар</a></li>
+                    <li><a href="dell_product.php">Удалить</a></li>
+                    <li><a href="change_product.php">Редактировать</a></li>
                 </ul>
               </li>
               <li><a href="#">Управление заказами</a>
