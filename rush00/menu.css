@@ -1,6 +1,9 @@
 body{
   text-align: center;
   align-content: center;
+  background-image: url('http://oboik.ru/uploads/11_05_2013/view/201209/oboik.ru_15713.jpg');
+  background-repeat: repeat;
+  color: white;
 }
 ul li{
   list-style: none;

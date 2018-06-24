@@ -49,6 +49,7 @@
 
     $login = trim($login);
     $password = trim($password);
+    $password = password_hash($password, PASSWORD_DEFAULT);
     $email = trim($email);
     $phone_number = trim($phone_number);
 

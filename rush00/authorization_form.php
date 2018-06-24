@@ -41,18 +41,19 @@
 
        <td id="a1">
          <div class="form_auth">
-           <form class="authorization" action="index.php" method="post">
+           <form class="authorization" action="login.php" method="post">
              <h2>Для <strong id="old">ЗАРЕГЕСТРИРОВАННЫХ</strong> пользователей:</h2>
              <p>Имя пользователя: <input type="text" name="login" maxlength="29" /></p>
              <p>Пароль: <input type="password" name="password" maxlength="14" /></p>
-             <p>Запомнить меня: <input type="checkbox" name="remember2" /></p>
-             <p><input type="submit" id="sub2" value="Вход" /></p>
+             <p><input type="submit" name="submit" id="sub2" value="Вход" /></p>
            </form>
          </div>
        </td>
      </tr>
    </table>
-
+   <div style="margin-top: 40px;">
+      <img src="http://www.pit4sport.com.ua/wp-content/uploads/2016/04/0adsEMTvJls-2.jpg" alt="pitashka">
+   </div>
 
  </div>
 <?php

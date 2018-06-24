@@ -1,17 +1,15 @@
 <?php
     session_start();
+
+    if (!isset($_SESSION['name']) || $_SESSION['name'] == "")
+    {
+      if (isset($_COOKIE['name']))
+        $_SESSION['name'] = $_COOKIE;
+    }
 ?>
 <link rel="stylesheet" href="header.css">
 <?php
   require_once 'header.php';
-  // $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
-  //echo "$_COOKIE['name']";
-  ?>
-
-
-
-
-
-  <?php
+  require_once 'element.php';
   require_once 'footer.php';
  ?>

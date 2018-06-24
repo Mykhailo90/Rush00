@@ -1,8 +1,6 @@
 
 <?php
   session_start();
-// Если есть информация о пользователе в куки - копируем ее в сессию
-  require_once 'start_session.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,15 +12,9 @@
   </head>
   <body>
 
-
-
 <?php
-// вытаскиваем из БД адреса картинок в переменную $ar_url
-// вытаскиевае имена категорий в переменную $ar_url
   require_once 'get_urls.php';
 ?>
-
-
 
 <div class="container_page">
     <div class="container_page">
@@ -41,7 +33,7 @@
             <table>
               <tr>
                 <td class="basket">
-                  <a href="#">
+                  <a href="basketS.php">
                   <?php
                   if ($_SESSION['goods'] != ""){
                     echo  '<img src="'.$ar_url[basket]
@@ -55,9 +47,9 @@
                   </a>
                 </td>
                 <td>
-                  <strong>Добавлено:</strong><?=$basket['goods_count']?> шт.<br/>
-                  <strong>На сумму:</strong><?=$all_check?> грн.<br/>
-                  <a href='basket.php'>Оформить заказ</a>
+                  <strong>Добавлено:</strong><?=$_SESSION['goods_count']?> шт.<br/>
+                  <strong>На сумму:</strong><?=$_SESSION['all_check']?> грн.<br/>
+                  <a href='basketS.php'>Оформить заказ</a>
                 </td>
               </tr>
             </table>
@@ -109,14 +101,14 @@
             <td>
               <ul id="nav">
                 <li>
-                  <a href="#" title="Условия оплаты">Доставка и оплата</a>
+                  <a href="pay_rules.php" title="Условия оплаты">Условия оплаты</a>
                 </li>
               </ul>
             </td>
             <td>
               <ul id="nav">
                 <li>
-                  <a href="#" title="Контакты">Контакты</a>
+                  <a href="contacts.php" title="Контакты">Контакты</a>
                 </li>
               </ul>
             </td>
@@ -124,7 +116,6 @@
               <ul id="nav">
                 <li>
                   <?php
-
                   $a = '<a href="logout.php" title="Покинуть кабинет">'.$_SESSION['name'].' / Выход </a>';
                   $b = '<a href="authorization_form.php" title="Войти в кабинет">Регистрация / Вход</a>';
 
@@ -133,13 +124,10 @@
                   else {
                     echo $b;
                   }
-
                   ?>
                 </li>
               </ul>
             </td>
           </tr>
         </table>
-      </div>
     </div>
-  <!-- Продолжение в футере -->
