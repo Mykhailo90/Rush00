@@ -1,5 +1,8 @@
 <?php
+  require_once 'admin_main.php';
+?>
 
+<?php
 function find_categ($catalog_id, $categ){
 	for ($i=0; $i < count($catalog_id); $i++) {
 		if ($catalog_id[$i][1] == $categ)

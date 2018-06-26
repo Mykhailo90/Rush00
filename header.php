@@ -79,7 +79,16 @@
             <td>
               <ul id="nav">
                 <li>
-                  <a href="index.php" title="Вернуться на главную страницу">Главная</a>
+                  <?php
+                    $a = '<a href="index.php" title="Вернуться на главную страницу">Главная</a>';
+                    $b = '<a href="admin_main.php" title="Вернуться на главную страницу">Главная</a>';
+                    if ($_SESSION['name'] == "admin")
+                      echo "$b";
+                    else {
+                      echo "$a";
+                    }
+                   ?>
+
                 </li>
               </ul>
             </td>

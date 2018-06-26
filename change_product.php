@@ -1,4 +1,30 @@
 <?php
+  require_once 'admin_main.php';
+?>
+
+
+<?php
+
+function count_categs_of_product($id)
+{
+
+    $conn = mysqli_connect("localhost", "msarapii", "Inn3315400371", "rush00");
+    $sql = "SELECT * FROM foods_categ;";
+    $query = mysqli_query($conn, $sql);
+    $var = mysqli_fetch_all($query);
+    $caunt_categs = 0;
+    for ($i=0; $i < count($var); $i++) {
+        if ($var[$i][1] == $id)
+            $caunt_categs++;
+    }
+    if ($caunt_categs <= 1)
+    {
+        return (0);
+    }
+    else {
+        return (1);
+    }
+}
 
 function find_categ($catalog_id, $categ){
 	for ($i=0; $i < count($catalog_id); $i++) {
@@ -91,25 +117,27 @@ function add_categ($id_fooduct, $names_categ)
 
 function remove_categ($id_fooduct, $names_categ)
 {
-		$conn = mysqli_connect("localhost", "msarapii", "Inn3315400371", "rush00");
-		$select = "
-		SELECT * FROM catalog_id
-		;";
-		$query = mysqli_query($conn, $select);
-		$catalog_id = mysqli_fetch_all($query);
-		$j = 0;
-		for ($i=0; $i < count($catalog_id); $i++) {
-			if ($catalog_id[$i][1] == $names_categ[$j])
-			{
-				$insert = "
-							DELETE FROM foods_categ
-							WHERE id_food = {$id_fooduct} AND id_categ = {$catalog_id[$i][0]}
-							;";
-				mysqli_query($conn, $insert);
-				$j++;
-				$i = 0;
-			}
-		}
+    if(count_categs_of_product($id_fooduct)){
+  		$conn = mysqli_connect("localhost", "msarapii", "Inn3315400371", "rush00");
+  		$select = "
+  		SELECT * FROM catalog_id
+  		;";
+  		$query = mysqli_query($conn, $select);
+  		$catalog_id = mysqli_fetch_all($query);
+  		$j = 0;
+  		for ($i=0; $i < count($catalog_id); $i++) {
+  			if ($catalog_id[$i][1] == $names_categ[$j])
+  			{
+  				$insert = "
+  							DELETE FROM foods_categ
+  							WHERE id_food = {$id_fooduct} AND id_categ = {$catalog_id[$i][0]}
+  							;";
+  				mysqli_query($conn, $insert);
+  				$j++;
+  				$i = 0;
+  			}
+  		}
+    }
 }
 
 function change_product($rows)

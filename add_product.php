@@ -1,44 +1,7 @@
 <?php
-
-function create_table_goods()
-{
-	$conn = mysqli_connect("localhost", "msarapii", "Inn3315400371", "rush00");
-	if (!$conn) {
-    	die("Connection failed: " . mysqli_connect_error()) . "<br>";
-	}
-	$sql = "CREATE TABLE IF NOT EXISTS goods (
-	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	position VARCHAR(30),
-	amount VARCHAR(30),
-	manufact VARCHAR(30),
-	price INT,
-	img VARCHAR(255)
-	);";
-	if (mysqli_query($conn, $sql)) {
-	    echo "Table Items created successfully" . "<br>";
-	} else {
-	    echo "Error creating table: " . mysqli_error($conn) . "<br>";
-	}
-	mysqli_close($conn);
-}
-
-function create_table_foods_categ()
-{
-	$conn = mysqli_connect("localhost", "msarapii", "Inn3315400371", "rush00");
-	if (!$conn) {
-    	die("Connection failed: " . mysqli_connect_error()) . "<br>";
-	}
-	$sql = "CREATE TABLE IF NOT EXISTS foods_categ (
-	id_food INT,
-	id_categ INT
-	);";
-	if (mysqli_query($conn, $sql)) {
-	    echo "Table foods_categ created successfully" . "<br>";
-	} else {
-	    echo "Error creating table: " . mysqli_error($conn) . "<br>";
-	}
-	mysqli_close($conn);
-}
+  require_once 'admin_main.php';
+?>
+<?php
 
 function make_options()
 {
@@ -86,7 +49,7 @@ function check_exist_product()
 function add_product()
 {
 		if ($_POST && $_POST['submit'] && $_POST['position'] && $_POST['amount'] &&
-			$_POST['manufact'] && $_POST['price'] && $_POST['categorys'] && $_POST['img'])
+			$_POST['manufact'] && $_POST['price'] && $_POST['categorys'] && $_POST['img'] && isset($_SESSION['name']))
 		{
 			$conn = mysqli_connect("localhost", "msarapii", "Inn3315400371", "rush00");
 			if (!$conn) {
@@ -127,11 +90,10 @@ function add_product()
 			mysqli_close($conn);
 		}
 		else {
-			echo"U didnt insert all values!";
+			echo"<h1>Пожалуйста заполите все поля!</h1>";
 		}
 }
-	create_table_goods();
-	create_table_foods_categ();
+
 	if (check_exist_product())
 		add_product();
 	$options = make_options();
@@ -139,31 +101,102 @@ function add_product()
 
 <html>
 	<head>
-		<title>Add items</title>
+		<style media="screen">
+    body{
+      font-size: 18px;
+    }
+    .ffff{
+      margin-left: -400px;
+    }
+      tr{
+        width: 100%;
+      }
+      b{
+        width: 200px;
+        height: 30px;
+        font-size: 20px;
+      }
+      table{
+        text-align: left;
+        vertical-align: center;
+        margin-top: 50px;
+        margin-left: 150px;
+      }
+      .cat_tab{
+        position: relative;
+        margin-top: -120px;
+        margin-left: 210px;
+      }
+      select{
+        height: 300px;
+      }
+      #q{
+        width: 320px;
+        height: 40px;
+        background-color: lightblue;
+        font-size: 24px;
+      }
+      rel{
+
+      }
+		</style>
 	</head>
-	<body>
-		<form method="post" style="text-align: center;"> Add Items
+  <div class="rel">
+	<div class="add_forma">
+		<form method="post" style="text-align: center;">
+      <table>
+      <tr>
+				<td>
+					<b>Производитель:</b>
+				</td>
+				<td>
+					<input type="text" name="manufact"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Позиция:</b>
+				</td>
+				<td>
+					<input type="text" name="position"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Объем:</b>
+				</td>
+				<td>
+						 <input type="text" name="amount"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Ценa:</b>
+				</td>
+
+				<td>
+						<input type="text" name="price"/>
+				</td>
+			</tr>
+      </table>
+		</div>
+
+		<div class="cat_tab">
+			<b>Укажите необходимые категории:</b>
 			<br>
-			<b>Производитель:</b> <input type="text" name="manufact"/>
-			<br>
-			<b>Позиция:</b> <input type="text" name="position"/>
-			<br>
-			<b>Объем:</b> <input type="text" name="amount"/>
-			<br>
-			<b>Ценa:</b> <input type="text" name="price"/>
-			<br>
-			<p>
-				<b>Категории:</b>
-				<br>
-				<select size="5" multiple name="categorys[]">
-				   <option disabled>Выберите категорию</option>
-					<?= $options ?>
-				</select>
-			</p>
-			<br>
-			<b>Адрес фото:</b> <input type="text" name="img"/>
-			<br>
-			<input type="submit" name="submit" value="ADD" />
+			<select size="5" multiple name="categorys[]">
+				 <option disabled>Выберите категорию</option>
+				<?= $options ?>
+			</select>
+		</p>
+      </div>
+      <div class="ffff">
+        <p>Адрес фото: <input type="text" name="img"/></p>
+
+  			<input id="q" type="submit" name="submit" value="ADD" />
+      </div>
+</div>
 		</form>
-	</body>
-</html>
+    <?php
+    	include 'footer.php';
+     ?>

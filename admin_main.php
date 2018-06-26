@@ -85,6 +85,11 @@
   .nav_menu li:hover > ul{
     display: block;
   }
+  #f1
+  {
+    vertical-align: center;
+    margin-top: 150px;
+  }
   </style>
   </head>
   <body>
@@ -101,9 +106,8 @@
           <ul>
               <li><a href="#">Управление категориями</a>
                 <ul>
-                    <li><a href="#">Добавить категорию</a></li>
-                    <li><a href="#">Удалить категорию</a></li>
-                    <li><a href="#">Редактировать</a></li>
+                    <li><a href="add_category.php">Добавить категорию</a></li>
+                    <li><a href="remove_category.php">Удалить категорию</a></li>
                 </ul>
               </li>
               <li><a href="#">Управление товарами</a>
@@ -115,9 +119,9 @@
               </li>
               <li><a href="#">Управление заказами</a>
                 <ul>
-                    <li><a href="#">Все заказы</a></li>
-                    <li><a href="#">Выполненные заказы</a></li>
-                    <li><a href="#">Новые заказы</a></li>
+                    <li><a href="all_orders.php">Все заказы</a></li>
+                    <li><a href="new_orders.php">Новые заказы</a></li>
+                    <li><a href="old_orders.php">Выполненные заказы</a></li>
                 </ul>
               </li>
               <li><a href="modif.html">Изменить пароль</a></li>
@@ -126,6 +130,7 @@
         </nav>
       </header>
 
+      <!-- <img id="f1" src="http://www.pit4sport.com.ua/wp-content/uploads/2016/01/powerpro_whe_2kg.jpg" alt="krasivo"> -->
 
   </body>
 </html>
