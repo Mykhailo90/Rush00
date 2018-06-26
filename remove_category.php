@@ -10,8 +10,11 @@
 		WHERE catalog_name LIKE '%{$_POST['category']}%'
 		;";
 
+
+
 		$query = mysqli_query($conn, $select);
 		$var = mysqli_fetch_all($query);
+
 		$_POST['category'] = trim($_POST['category']);
 		if ($_POST['category'] != "" && $var){
 			$insert =   "

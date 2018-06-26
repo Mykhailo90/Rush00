@@ -22,6 +22,7 @@ for ($i = 0 ; $i < $rows ; ++$i)
 }
 
 $str = "-----------------------------------------------------\n".$obj['time'].$obj['user_id']." ".$obj['email']." ".$obj['phone']."\n";
+$str2 = "-----------------------------------------------------</br>".$obj['time'].$obj['user_id']." ".$obj['email']." ".$obj['phone']."</br>";
 
 $sql = "
         SELECT * FROM basket WHERE sid LIKE '%{$_SESSION['sid']}%'
@@ -34,14 +35,30 @@ for ($i = 0 ; $i < $rows ; ++$i)
   $row = mysqli_fetch_assoc($result);
   $str .= $row['monufact'];
   $str .= " ";
+
+  $str2 .= $row['monufact'];
+  $str2 .= " ";
+
   $str .= $row['position'];
   $str .= " ";
+
+  $str2 .= $row['position'];
+  $str2 .= " ";
+
   $str .= $row['amount'];
   $str .= " ";
+
+  $str2 .= $row['amount'];
+  $str2 .= " ";
+
   $str .= $row['price'];
   $str .= "\n";
+
+  $str2 .= $row['price'];
+  $str2 .= "</br>";
   }
   $str .= "\n";
+  $str2 .= "</br>";
 
 mysqli_free_result($result);
 
@@ -51,13 +68,13 @@ $test = fwrite($fp, $str);
 flock($fp, LOCK_UN);
 fclose($fp);
 
-$str = serialize($str);
+$str2 = serialize($str2);
 
 require_once 'db_connect.php';
 
 $sql = "
         INSERT INTO orders (time_z, zakaz, aktive)
-        VALUES ('{$obj['time']}', '{$str}', 1)
+        VALUES ('{$obj['time']}', '{$str2}', 1)
         ;";
 $result2 = mysqli_query($db, $sql);
 

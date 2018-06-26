@@ -1,7 +1,11 @@
 <head>
   <style>
-    .left{
-      float: left;
+  .data{
+    color: blue;
+  }
+  .data p{
+      color: black;
+      margin-left: 300px;
     }
   </style>
 </head>
@@ -17,7 +21,7 @@ $rows = mysqli_num_rows($result);
 for ($i = 0 ; $i < $rows ; ++$i)
 {
   $row = mysqli_fetch_assoc($result);
-  echo '<div class="data">'.$row['time_z'].'">
+  echo '<div class="data">'.$row['time_z'].'
         </div><p>'.unserialize($row['zakaz']).'
         </p>';
 }

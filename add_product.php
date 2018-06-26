@@ -61,11 +61,11 @@ function add_product()
 			$query = mysqli_query($conn, $select);
 			$var = mysqli_fetch_all($query);
 			$insert = "
-			INSERT INTO goods (`position`, `amount`, `manufact`, `price`, `img`)
+			INSERT INTO goods (`position`, `amount`, `monufact`, `price`, `img`)
 			VALUES ('{$_POST['position']}', '{$_POST['amount']}', '{$_POST['manufact']}', {$_POST['price']}, '{$_POST['img']}')
 			;";
 			if (mysqli_query($conn, $insert)) {
-				echo "New product added successfully<br>";
+				echo "Новый продукт успешно добавлен!<br>";
 			} else {
 				echo "Error: " . $insert . "<br>" . mysqli_error($conn);
 			}
@@ -82,7 +82,7 @@ function add_product()
 				VALUES ($q_id, $category_id)
 				;";
 				if (mysqli_query($conn, $insert)) {
-				echo "New id_food and id_categ added successfully<br>";
+				// echo "New id_food and id_categ added successfully<br>";
 				} else {
 					echo "Error: " . $insert . "<br>" . mysqli_error($conn);
 				}
@@ -106,7 +106,8 @@ function add_product()
       font-size: 18px;
     }
     .ffff{
-      margin-left: -400px;
+      margin-top: 50px;
+      margin-left: -50px;
     }
       tr{
         width: 100%;
@@ -123,12 +124,12 @@ function add_product()
         margin-left: 150px;
       }
       .cat_tab{
-        position: relative;
-        margin-top: -120px;
-        margin-left: 210px;
+        margin-top: -215px;
+        margin-left: 850px;
       }
       select{
-        height: 300px;
+        height: 150px;
+        font-size: 14px;
       }
       #q{
         width: 320px;
@@ -136,67 +137,74 @@ function add_product()
         background-color: lightblue;
         font-size: 24px;
       }
-      rel{
+      .test{
 
       }
+      .rel{
+        min-width: 950px;
+        max-width: 1150px;
+        height: 100%;
+        display: block;
+        margin: auto;
+      }
+      .add_forma{
+        margin-left: 40px;
+      }
+      #price{
+        margin-left: 40px;
+      }
+
 		</style>
 	</head>
+  <div class="test">
   <div class="rel">
 	<div class="add_forma">
-		<form method="post" style="text-align: center;">
-      <table>
-      <tr>
-				<td>
-					<b>Производитель:</b>
-				</td>
-				<td>
-					<input type="text" name="manufact"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>Позиция:</b>
-				</td>
-				<td>
-					<input type="text" name="position"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>Объем:</b>
-				</td>
-				<td>
-						 <input type="text" name="amount"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>Ценa:</b>
-				</td>
+		<form method="post" style="text-align: left;" action="add_product.php">
+      <p>
+        <b>Производитель:</b> <input type="text" name="manufact"/>
+      </p>
 
-				<td>
-						<input type="text" name="price"/>
-				</td>
-			</tr>
-      </table>
+			<p>
+        <b>Позиция:</b>
+        <input id="pos" type="text" name="position"/>
+      </p>
+
+				<p>
+          <b>Объем:</b>
+           <input type="text" name="amount"/>
+        </p>
+
+				<p>
+          <b>Ценa:</b>
+          <input id="price" type="text" name="price"/>
+        </p>
+        <p>
+          <b>Адрес фото:</b>
+          <input type="text" name="img"/>
+        </p>
+      <!-- </form> -->
 		</div>
 
 		<div class="cat_tab">
-			<b>Укажите необходимые категории:</b>
+      <!-- <form class="" action="add_product.php" method="post"> -->
+
+
+      <p>
+      <b>Укажите необходимые категории:</b>
 			<br>
 			<select size="5" multiple name="categorys[]">
-				 <option disabled>Выберите категорию</option>
+				 <option disabled>Возможно несколько</option>
 				<?= $options ?>
 			</select>
 		</p>
       </div>
       <div class="ffff">
-        <p>Адрес фото: <input type="text" name="img"/></p>
-
-  			<input id="q" type="submit" name="submit" value="ADD" />
+      		<input id="q" type="submit" name="submit" value="Добавить" />
       </div>
+      </form>
+      <?php
+        include 'footer.php';
+       ?>
 </div>
-		</form>
-    <?php
-    	include 'footer.php';
-     ?>
+
+</div>
